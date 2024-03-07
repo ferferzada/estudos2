@@ -16,14 +16,18 @@ while errors != 3 and not found_word:
 
     if len(guess)  == 1:
         if guess in selected_word:
-            found_letter = False
-
             for i, letter in enumerate(selected_word):
                 if guess  == letter:
                     guess_word[i] = letter
-                    found_letter = True
-                
+        else:
+            errors +=1
+    if "_" not in found_word:
+        found_word = True
 
+if found_word:
+    print('Parabens cabaço!')
+else:
+    print('NUM ACERTOU CABAÇO')
 
 
 
