@@ -18,16 +18,30 @@ while errors != 3 and not found_word:
     if not guess.isalpha():
         print('Você deve informar uma letra ou uma palavra')
         continue
-    
+
+
+
     if len(guess)  == 1:
+        if guess in guess_word:
+            print("VOCÊ JA MAMA")
+            continue
+        
         if guess in selected_word:
             for i, letter in enumerate(selected_word):
                 if guess  == letter:
                     guess_word[i] = letter
         else:
+            print("Palpite incorreto")
             errors +=1
-    if "_" not in found_word:
-        found_word = True
+
+        if "_" not in guess_word:
+            found_word = True
+    else:
+        if guess == selected_word:  
+            found_word = True
+        else:
+            errors += 1
+            print("Palpite incorreto")
 
 if found_word:
     print('Parabens cabaço!')
