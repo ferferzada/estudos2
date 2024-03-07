@@ -13,7 +13,12 @@ found_word = False
 while errors != 3 and not found_word:
     print(' '.join(guess_word))
     guess = input('Informe seu Palpite: ')
+    guess = guess.lower()
 
+    if not guess.isalpha():
+        print('Você deve informar uma letra ou uma palavra')
+        continue
+    
     if len(guess)  == 1:
         if guess in selected_word:
             for i, letter in enumerate(selected_word):
@@ -27,7 +32,7 @@ while errors != 3 and not found_word:
 if found_word:
     print('Parabens cabaço!')
 else:
-    print('NUM ACERTOU CABAÇO')
+    print(f'NUM ACERTOU CABAÇO a áçabra é {selected_word}')
 
 
 
