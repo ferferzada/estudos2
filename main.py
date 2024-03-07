@@ -4,24 +4,25 @@ sort_list = ['moises', 'cajado', 'mar', 'porta', 'monitor']
 
 selected_word = choice(sort_list)
 
-blank_word  = []
-
-print("_ " * len(selected_word))
+guess_word = ['_' for _ in selected_word]
 
 errors = 0
 
 found_word = False
 
-found_char = []
+while errors != 3 and not found_word:
+    print(' '.join(guess_word))
+    guess = input('Informe seu Palpite: ')
 
-while errors != 3 and not found_word :
-    input_user = str(input('De um palpite'))
-    if(len(input_user) > 1 and len(input_user) == len(selected_word)):
-        print('DIGIRA CERTO EMBECIL')
-        continue
-    if(len(input_user) > 1):
-        for i, char in selected_word:
-            if char == input_user :
+    if len(guess)  == 1:
+        if guess in selected_word:
+            found_letter = False
+
+            for i, letter in enumerate(selected_word):
+                if guess  == letter:
+                    guess_word[i] = letter
+                    found_letter = True
+                
 
 
 
