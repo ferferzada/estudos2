@@ -34,8 +34,9 @@ while errors != 3 and not found_word:
             print("Palpite incorreto")
             errors +=1
 
-        if "_" not in guess_word:
-            found_word = True
+        found_word = "_" not in guess_word
+    elif guess == selected_word:
+        found_word = True
     else:
         if guess == selected_word:  
             found_word = True
