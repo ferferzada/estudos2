@@ -31,3 +31,7 @@ while errors != 3 and not found_word:
     print(' '.join(guess_word))
     guess = handle_input()
 
+    if not validate_guess(guess):
+        continue
+    
+    
