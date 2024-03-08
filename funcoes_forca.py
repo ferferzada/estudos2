@@ -16,7 +16,7 @@ def validate_guess(guess:str)->bool:
         print('GEME MEU NOME')
         return False
     
-    if len(guess) == 1 and guess in guess_word:
+    if is_single_letter(guess) and guess in guess_word:
         print('falando dudu')
         return False
     
@@ -24,7 +24,7 @@ def validate_guess(guess:str)->bool:
 
 def check_guess(guess:str):
     global found_word
-    if len(guess)  == 1 and guess in selected_word:
+    if is_single_letter(guess) and guess in selected_word:
         for i, letter in enumerate(selected_word):
             if guess  == letter:
                 guess_word[i] = letter
@@ -42,23 +42,26 @@ def show_error():
     errors += 1
     print("Palpite incorreto")
 
+def is_single_letter(guess:str)->bool:
+    return len(guess)==1
+
 selected_word = draw_word()
 
 
 guess_word = ['_' for _ in selected_word]
 
 
+if __name__ == '__main__':
+    while errors != 3 and not found_word:
+        print(' '.join(guess_word))
+        guess = handle_input()
 
-while errors != 3 and not found_word:
-    print(' '.join(guess_word))
-    guess = handle_input()
-
-    if not validate_guess(guess):
-        continue
-    check_guess(guess)
+        if not validate_guess(guess):
+            continue
+        check_guess(guess)
 
 
-if found_word:
-    print('Parabens cabaço!')
-else:
-    print(f'NUM ACERTOU CABAÇO a áçabra é {selected_word}')
+    if found_word:
+        print('Parabens cabaço!')
+    else:
+        print(f'NUM ACERTOU CABAÇO a áçabra é {selected_word}')
