@@ -23,26 +23,22 @@ def validate_guess(guess:str)->bool:
     return True
 
 def check_guess(guess:str):
-   
-    if len(guess)  == 1:
-        if guess in selected_word:
-            for i, letter in enumerate(selected_word):
-                if guess  == letter:
-                    guess_word[i] = letter
-        else:
-            show_error()
+    global found_word
+    if len(guess)  == 1 and guess in selected_word:
+        for i, letter in enumerate(selected_word):
+            if guess  == letter:
+                guess_word[i] = letter
+       
         found_word = "_" not in guess_word
     elif guess == selected_word:
         found_word = True
     else:
-        if guess == selected_word:  
-            found_word = True
-        else:
-            show_error()
+        show_error()
 
    
 
 def show_error():
+    global errors 
     errors += 1
     print("Palpite incorreto")
 
@@ -61,3 +57,8 @@ while errors != 3 and not found_word:
         continue
     check_guess(guess)
 
+
+if found_word:
+    print('Parabens cabaço!')
+else:
+    print(f'NUM ACERTOU CABAÇO a áçabra é {selected_word}')
